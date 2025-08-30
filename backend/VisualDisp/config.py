@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SECRET_KEY = 'caa4666641a41891d231c5dc39174e24'
+    SECRET_KEY = "caa4666641a41891d231c5dc39174e24"
     SQLALCHEMY_DATABASE_URI = getenv("DATABASE_URL")
         
     def __init__(self):
