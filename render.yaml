@@ -15,11 +15,12 @@ services:
       - key: FLASK_ENV
         value: production
 
-  - type: static
+  - type: web
     name: visual-match-frontend
     rootDir: VisprodMatch
+    runtime: static
     buildCommand: npm install && npm run build
-    publishDir: dist
+    publishDir: ./VisprodMatch/dist
     envVars:
       - key: VITE_API_URL
         fromService:
