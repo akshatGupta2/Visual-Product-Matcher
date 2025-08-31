@@ -1,0 +1,9 @@
+FROM python:3.11-trixie
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+Expose 10000
+# We use Gunicorn with 4 worker processes and bind it to the exposed port
+CMD ["gunicorn", "--bind", "0.0.0.0:10000", "--workers", "4", "VisualDisp:create_app()"]
