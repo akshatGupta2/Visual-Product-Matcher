@@ -8,6 +8,8 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
+      - key: DATABASE_URL
+        value: sqlite:///DBs/products.db
 
   - type: static
     name: visual-match-frontend
