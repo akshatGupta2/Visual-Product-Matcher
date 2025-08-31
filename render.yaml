@@ -20,7 +20,7 @@ services:
     rootDir: VisprodMatch
     runtime: static
     buildCommand: npm install && npm run build
-    publishDir: ./VisprodMatch/dist
+    publishDir: dist
     envVars:
       - key: VITE_API_URL
         fromService:
