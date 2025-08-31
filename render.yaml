@@ -11,7 +11,7 @@ services:
 
   - type: static
     name: visual-match-frontend
-    rootDir: frontend
+    rootDir: VisprodMatch
     buildCommand: npm install && npm run build
     publishDir: dist
     envVars:
