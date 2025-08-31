@@ -15,10 +15,9 @@ services:
       - key: FLASK_ENV
         value: production
 
-  - type: web
+  - type: static
     name: visual-match-frontend
     rootDir: VisprodMatch
-    runtime: static
     buildCommand: npm install && npm run build
     publishDir: dist
     envVars:
