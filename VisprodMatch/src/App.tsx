@@ -13,18 +13,14 @@ export interface Product {
   similarity: number;
 }
 
-const API_URL = "http://127.0.0.1:4000"; // Replace with your actual API URL
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:4000";
 
 function App() {
-  // Main state for the application with explicit types
   const [image, setImage] = useState<string | null>(null);
   const [results, setResults] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  // const [limit, setLimit] = useState<number>(30);
 
-  // Filter results based on limit
-  // const displayedResults = allResults.slice(0, limit);
 
   const handleFileUpload = (file: File) => {
     if (file) {
