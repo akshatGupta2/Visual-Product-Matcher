@@ -2,13 +2,12 @@ import torch
 from PIL import Image
 from transformers import CLIPProcessor, CLIPModel
 from io import BytesIO
-import requests
 
 # Load the CLIP model and processor once to avoid reloading on each request.
 print("Loading CLIP model for backend...")
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 # Update the processor initialization
-processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32", use_fast=True)
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 # The correct variable name is 'device', which is defined below.
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
@@ -29,22 +28,8 @@ def generate_embedding(image_data):
         print(f"Error generating embedding: {e}")
         return None
 
-def find_similar_products(query_embedding, all_products, k=5):
-    """
-    Finds the k most similar products from a list of product objects.
+def find_similar_products(query_embedding, all_products, k=50):
     
-    This function expects a list of product objects, where each object has
-    an 'embedding' attribute. It then calculates the cosine similarity
-    between the query and each product.
-    
-    Args:
-        query_embedding (torch.Tensor): The embedding of the query image.
-        all_products (list): A list of product objects from a database.
-        k (int): The number of most similar products to return.
-        
-    Returns:
-        list: A list of tuples containing (product_object, similarity_score).
-    """
     if query_embedding is None or not all_products:
         return []
 
