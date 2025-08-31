@@ -60,7 +60,12 @@ def search_prod():
         if query_embedding is None:
             return jsonify({"error": "Failed to generate embedding"}), 400
 
-        all_products = Products.query.all()
+        BATCH_SIZE = 50
+        all_products = []
+        
+        for offset in range(0, Products.query.count(), BATCH_SIZE):
+            batch = Products.query.offset(offset).limit(BATCH_SIZE).all()
+            all_products.extend(batch)
         
         # Convert binary embeddings to tensors
         for product in all_products:

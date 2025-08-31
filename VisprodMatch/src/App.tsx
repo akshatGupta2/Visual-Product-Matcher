@@ -3,7 +3,6 @@ import Header from "./componets/header/Header";
 import ImageUploader from "./componets/imageUploaeder/ImageUploader";
 import ImagePreview from "./componets/imgPre/ImagePreview";
 import SearchResult from "./componets/searchRes/SearchResult";
-// import ResultsFilter from "./components/ResultsFilter/ResultsFilter";
 
 export interface Product {
   id: number;
@@ -13,7 +12,7 @@ export interface Product {
   similarity: number;
 }
 
-const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:4000";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:10000";
 
 function App() {
   const [image, setImage] = useState<string | null>(null);

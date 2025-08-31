@@ -33,14 +33,14 @@ services:
     runtime: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn 'VisualDisp:create_app()'
+    startCommand: gunicorn  'VisualDisp:create_app()'
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
       - key: DATABASE_URL
         value: sqlite:///DBs/products.db
       - key: PORT
-        value: 4000
+        value: 10000
       - key: FLASK_ENV
         value: production
 

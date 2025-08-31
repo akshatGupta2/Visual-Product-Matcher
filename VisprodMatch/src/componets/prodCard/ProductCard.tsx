@@ -6,7 +6,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="card bg-secondary bg-opacity-25 rounded-3 shadow-sm overflow-hidden product-card-hover">
+    <div className="card bg-secondary bg-opacity-25 rounded-3 shadow-sm mx-1 overflow-hidden product-card-hover">
       <img
         src={product.imageUrl}
         alt={product.name}

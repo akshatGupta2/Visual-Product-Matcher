@@ -7,7 +7,7 @@ from io import BytesIO
 print("Loading CLIP model for backend...")
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 # Update the processor initialization
-processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32", use_fast=True)
 # The correct variable name is 'device', which is defined below.
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
