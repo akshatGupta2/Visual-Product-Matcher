@@ -1,16 +1,16 @@
-import { useState } from "react";
-import type { Product } from "../../App";
-import ProductCard from "../prodCard/ProductCard";
+import { useState } from "react"
+import type { Product } from "../../App"
+import ProductCard from "../prodCard/ProductCard"
 
 interface SearchResultsProps {
   products: Product[];
 }
 
 const SearchResult = ({ products }: SearchResultsProps) => {
-  const [displayLimit, setDisplayLimit] = useState<number>(12);
+  const [displayLimit, setDisplayLimit] = useState<number>(12)
 
   const handleLimitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setDisplayLimit(Number(event.target.value));
+    setDisplayLimit(Number(event.target.value))
   };
 
   // Filter products based on display limit
@@ -57,4 +57,4 @@ const SearchResult = ({ products }: SearchResultsProps) => {
   );
 };
 
-export default SearchResult;
+export default SearchResult

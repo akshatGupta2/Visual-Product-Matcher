@@ -1,41 +1,41 @@
-import { useState } from "react";
-import Header from "./componets/header/Header";
-import ImageUploader from "./componets/imageUploaeder/ImageUploader";
-import ImagePreview from "./componets/imgPre/ImagePreview";
-import SearchResult from "./componets/searchRes/SearchResult";
+import { useState } from "react"
+import Header from "./componets/header/Header"
+import ImageUploader from "./componets/imageUploaeder/ImageUploader"
+import ImagePreview from "./componets/imgPre/ImagePreview"
+import SearchResult from "./componets/searchRes/SearchResult"
 
 export interface Product {
-  id: number;
-  name: string;
-  category: string;
-  imageUrl: string;
-  similarity: number;
+  id: number
+  name: string
+  category: string
+  imageUrl: string
+  similarity: number
 }
 
-const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:10000";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:10000"
 
 function App() {
-  const [image, setImage] = useState<string | null>(null);
-  const [results, setResults] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [image, setImage] = useState<string | null>(null)
+  const [results, setResults] = useState<Product[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
 
 
   const handleFileUpload = (file: File) => {
     if (file) {
       setImage(URL.createObjectURL(file));
       // Reset state on new upload
-      setResults([]);
-      setError(null);
+      setResults([])
+      setError(null)
     }
   };
 
   // Handler for image URL input
   const handleImageUrlInput = (url: string) => {
-    setImage(url);
+    setImage(url)
     // Reset state on new URL input
-    setResults([]);
-    setError(null);
+    setResults([])
+    setError(null)
   };
 
   // Main search function
@@ -57,7 +57,6 @@ function App() {
         const blob = await response.blob();
         formData.append("file", blob, "image.jpg");
       } else if (image.startsWith("http")) {
-        // If it's a URL, send it as URL parameter
         formData.append("url", image);
       }
 
@@ -70,7 +69,7 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
+      const data = await response.json()
 
       // Store all results
       const transformedResults: Product[] = data.results.map((item: any) => ({
@@ -81,7 +80,6 @@ function App() {
         similarity: item.similarity_score,
       }));
 
-      // setAllResults(transformedResults);
       setResults(transformedResults);
     } catch (e) {
       console.error("Search error:", e);
@@ -119,7 +117,7 @@ function App() {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

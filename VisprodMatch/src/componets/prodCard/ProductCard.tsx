@@ -1,4 +1,4 @@
-import type { Product } from "../../App";
+import type { Product } from "../../App"
 
 interface ProductCardProps {
   product: Product;
@@ -28,4 +28,4 @@ const ProductCard = ({ product }: ProductCardProps) => {
   );
 };
 
-export default ProductCard;
+export default ProductCard

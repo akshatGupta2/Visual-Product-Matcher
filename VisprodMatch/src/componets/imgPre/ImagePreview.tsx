@@ -1,5 +1,5 @@
 interface ImagePreviewProps {
-  src: string | null;
+  src: string | null
 }
 function ImagePreview({ src }: ImagePreviewProps) {
     return (

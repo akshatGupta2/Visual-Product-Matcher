@@ -1,12 +1,12 @@
-import { useState } from "react";
-import type { ChangeEvent } from "react";
+import { useState } from "react"
+import type { ChangeEvent } from "react"
 
 interface ImageUploaderProps {
-  onFileUpload: (file: File) => void;
-  onImageUrlInput: (url: string) => void;
-  handleSearch: () => void;
-  loading: boolean;
-  image: string | null;
+  onFileUpload: (file: File) => void
+  onImageUrlInput: (url: string) => void
+  handleSearch: () => void
+  loading: boolean
+  image: string | null
 }
 
 const ImageUploader = function ({
@@ -16,16 +16,16 @@ const ImageUploader = function ({
   loading,
   image,
 }: ImageUploaderProps) {
-  const [url, setUrl] = useState<string>("");
+  const [url, setUrl] = useState<string>("")
 
   // Function to paste image from clipboard as a file
   const handlePaste = (event: React.ClipboardEvent) => {
-    const items = event.clipboardData.items;
+    const items = event.clipboardData.items
     for (const item of Array.from(items)) {
       if (item.type.startsWith("image/")) {
-        const file = item.getAsFile();
-        if (file) onFileUpload(file);
-        return;
+        const file = item.getAsFile()
+        if (file) onFileUpload(file)
+        return
       }
     }
   };
