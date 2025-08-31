@@ -3,8 +3,14 @@ services:
     name: visual-match-api
     runtime: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn run:app
+    buildCommand: |
+     pip install -r backend/requirements.txt
+     cd VisprodMatch
+     npm install
+     npm run build
+    startCommand: |
+     export PYTHONPATH=$PYTHONPATH:./backend
+     gunicorn --chdir backend VisualDisp:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
